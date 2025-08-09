@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポケカレッジ秋葉原対戦会 - Modern Design</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-purple: #8b5cf6;
+            --secondary-purple: #a855f7;
+            --light-purple: #c084fc;
+            --dark-purple: #7c3aed;
+            --accent-purple: #d8b4fe;
+            --bg-light: #faf7ff;
+            --bg-white: #ffffff;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --text-light: #9ca3af;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            overflow-x: hidden;
+        }
+        
+        
+        /* Hero Message */
+        .hero-message {
+            background: radial-gradient(circle at center, #667eea 0%, #764ba2 50%, var(--primary-purple) 100%);
+            background-image: url('anime-girl-bg.png');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-blend-mode: soft-light;
+            opacity: 0.8;
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .hero-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1;
+        }
+        
+        .hero-message-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-message-text {
+            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            margin: 0;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(139, 92, 246, 0.4);
+            z-index: 1;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--bg-light);
+            border-radius: 50px 50px 0 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .hero-title {
+            font-family: 'Zen Kaku Gothic New', 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        
+        .event-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-button {
+            background: var(--bg-white);
+            color: var(--primary-purple);
+            border: none;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-family: 'Zen Kaku Gothic New', 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+        }
+        
+        .feature-card {
+            background: var(--bg-white);
+            padding: 40px 32px;
+            border-radius: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--secondary-purple));
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+        
+        .feature-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        /* Price Section */
+        .price-section {
+            background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
+            color: white;
+            text-align: center;
+            border-radius: 32px;
+            margin: 0 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .price-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .price {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+        
+        .price-detail {
+            font-size: 1.2rem;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+        
+        /* Coach Section */
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .coach-card {
+            background: var(--bg-white);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+        
+        .coach-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 70px rgba(139, 92, 246, 0.2);
+        }
+        
+        .coach-image {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            object-position: center;
+            background-color: #f8f9fa;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .coach-info {
+            padding: 32px;
+        }
+        
+        .coach-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+        
+        .coach-role {
+            color: var(--primary-purple);
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .coach-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        .coach-achievements {
+            margin-top: 20px;
+            padding: 16px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(168, 85, 247, 0.05));
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-purple);
+        }
+        
+        .achievements-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-purple);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        .achievement-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .achievement-icon {
+            font-size: 1rem;
+        }
+        
+        /* Details Section */
+        .details-card {
+            background: var(--bg-white);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .details-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-purple);
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+        
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-icon {
+            font-size: 1.5rem;
+            margin-top: 4px;
+        }
+        
+        .detail-content {
+            flex: 1;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+        
+        .detail-value {
+            color: var(--text-gray);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-message {
+                padding: 60px 0;
+                background-size: 250px 250px;
+                background-position: right 5% top 20%;
+            }
+            
+            .hero-message-text {
+                font-size: clamp(2rem, 8vw, 3rem);
+                line-height: 1.2;
+            }
+            
+            .hero-title {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+                margin-bottom: 24px;
+            }
+            
+            .event-badge {
+                font-size: 0.9rem;
+                padding: 10px 16px;
+                margin: 8px 4px;
+                display: block;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .header {
+                padding: 80px 0 60px;
+            }
+            
+            .section {
+                padding: 40px 0;
+            }
+            
+            .section-title {
+                font-size: clamp(1.5rem, 6vw, 2.5rem);
+                margin-bottom: 16px;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 40px;
+                padding: 0 16px;
+            }
+            
+            .features-grid,
+            .coaches-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-top: 40px;
+            }
+            
+            .feature-card {
+                padding: 32px 24px;
+                margin: 0 16px;
+            }
+            
+            .feature-card img {
+                height: 180px !important;
+            }
+            
+            .coach-card {
+                margin: 0 16px;
+            }
+            
+            .coach-image {
+                height: 240px;
+            }
+            
+            .details-card {
+                padding: 32px 20px;
+                margin: 0 16px;
+            }
+            
+            .detail-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+            
+            .detail-icon {
+                font-size: 2rem;
+                margin-top: 0;
+            }
+            
+            .price-section {
+                margin: 0 16px;
+                border-radius: 16px;
+            }
+            
+            .price {
+                font-size: clamp(2.5rem, 12vw, 4rem);
+            }
+            
+            .cta-button {
+                padding: 16px 32px;
+                font-size: 1rem;
+                display: block;
+                width: fit-content;
+                margin: 0 auto;
+            }
+            
+            .container {
+                padding: 0 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-message {
+                padding: 40px 0;
+                background-size: 200px 200px;
+            }
+            
+            .hero-message-text {
+                font-size: clamp(1.8rem, 10vw, 2.5rem);
+            }
+            
+            .section {
+                padding: 32px 0;
+            }
+            
+            .feature-card,
+            .coach-card {
+                margin: 0 8px;
+            }
+            
+            .details-card {
+                margin: 0 8px;
+                padding: 24px 16px;
+            }
+            
+            .price-section {
+                margin: 0 8px;
+                padding: 32px 16px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes epicGradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            25% {
+                background-position: 100% 0%;
+            }
+            50% {
+                background-position: 200% 50%;
+            }
+            75% {
+                background-position: 300% 100%;
+            }
+            100% {
+                background-position: 400% 50%;
+            }
+        }
+        
+        @keyframes titlePulse {
+            0% {
+                transform: scale(1) rotateX(0deg);
+                filter: drop-shadow(0 8px 30px rgba(255, 255, 255, 0.8)) 
+                        drop-shadow(0 0 40px rgba(255, 107, 107, 0.6)) 
+                        drop-shadow(0 0 60px rgba(255, 217, 61, 0.4));
+            }
+            100% {
+                transform: scale(1.05) rotateX(5deg);
+                filter: drop-shadow(0 12px 40px rgba(255, 255, 255, 1.0)) 
+                        drop-shadow(0 0 60px rgba(255, 107, 107, 0.9)) 
+                        drop-shadow(0 0 80px rgba(255, 217, 61, 0.7)) 
+                        drop-shadow(0 0 100px rgba(107, 207, 126, 0.5));
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="hero-message">
+        <div class="container">
+            <div class="hero-message-content">
+                <h1 class="hero-message-text">ポケカレッジが<br>あなたの人生に彩りを</h1>
+                <h2 class="hero-title" style="font-family: 'Impact', 'Arial Black', 'Zen Kaku Gothic New', 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif; font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; margin-top: 20px; position: relative; z-index: 2; background: linear-gradient(45deg, #ff6b6b, #ffd93d, #6bcf7e, #4ecdc4, #45b7d1, #b142f5, #ff6b6b); background-size: 400% 400%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; letter-spacing: 0.2em; text-transform: uppercase; animation: epicGradientShift 3s ease-in-out infinite, titlePulse 2s ease-in-out infinite alternate; filter: drop-shadow(0 8px 30px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 40px rgba(255, 107, 107, 0.6)) drop-shadow(0 0 60px rgba(255, 217, 61, 0.4)); text-shadow: none;">ポケカレッジ</h2>
+                <p class="hero-subtitle">最高の練習環境でポケモンカードを楽しもう</p>
+                
+                
+                <a href="https://note.com/pokemon_volt/membership/join" class="cta-button">今すぐ参加申込み</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">なぜポケカレッジなのか？</h2>
+            <p class="section-subtitle">経験豊富なコーチ陣と最高の環境で、あなたのポケモンカードライフをサポートします</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="beginner-welcome-group.jpg" alt="初心者歓迎の練習会の様子" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                    <h3 class="feature-title">初心者大歓迎</h3>
+                    <p class="feature-description">初めての方でも安心してご参加いただけます。基本ルールから戦略まで、丁寧にサポートいたします。</p>
+                </div>
+                
+                
+                
+                <div class="feature-card">
+                    <img src="masamune-practice.jpg" alt="都内練習会の様子" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                    <div class="feature-icon">📅</div>
+                    <h3 class="feature-title">毎週平日１９－２２時練習会都内で開催</h3>
+                    <p class="feature-description">平日の夜19時から22時まで、都内で定期的に練習会を開催。お仕事帰りにも参加しやすい時間設定です。</p>
+                </div>
+                
+                
+                <div class="feature-card">
+                    <img src="remote-battle-environment.jpg" alt="リモート対戦の様子" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 20px;">
+                    <div class="feature-icon">💻</div>
+                    <h3 class="feature-title">遠方の方でも安心の充実したリモート対戦環境があります</h3>
+                    <p class="feature-description">オンライン対戦システムで全国どこからでも参加可能。距離を気にせず質の高い練習環境を提供します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Section -->
+    <section class="section">
+        <div class="container">
+            <div class="price-section">
+                <div class="container">
+                    <div class="price-content section">
+                        <h2 class="section-title" style="color: white; margin-bottom: 32px;">参加費用</h2>
+                        <div class="price">¥1,980</div>
+                        <p class="price-detail">現金払いのみ</p>
+                        <p style="opacity: 0.9;">リーズナブルな価格で本格的な対戦会に参加できます！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coach Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">優秀なコーチ陣</h2>
+            <p class="section-subtitle">経験豊富なコーチたちがあなたの上達をサポート</p>
+            
+            <div class="coaches-grid">
+                <div class="coach-card">
+                    <img src="masamune-coach.jpg" alt="マサムネコーチ" class="coach-image">
+                    <div class="coach-info">
+                        <h3 class="coach-name">マサムネコーチ</h3>
+                        <p class="coach-role">🌸</p>
+                        <p class="coach-description">ポケカレッジ創始者兼コーチ</p>
+                        
+                        <div class="coach-achievements">
+                            <h4 class="achievements-title">
+                                <span class="achievement-icon">🏆</span>
+                                経歴
+                            </h4>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🎓</span>
+                                <span>青山学院大学法学部卒業</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🏆</span>
+                                <span>WCS Top32</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🥉</span>
+                                <span>CL札幌 Top8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="coach-card">
+                    <img src="kurokuma-coach.jpg" alt="くろくまコーチ" class="coach-image">
+                    <div class="coach-info">
+                        <h3 class="coach-name">くろくまコーチ</h3>
+                        <p class="coach-role">🥃</p>
+                        <p class="coach-description">コーチ</p>
+                        
+                        <div class="coach-achievements">
+                            <h4 class="achievements-title">
+                                <span class="achievement-icon">🏆</span>
+                                経歴
+                            </h4>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🎓</span>
+                                <span>一橋大学社会学部卒業</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🥉</span>
+                                <span>JCS2023 ベスト8</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🏆</span>
+                                <span>WCS2023 44位</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🎯</span>
+                                <span>2025CL大阪 11-4</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🎯</span>
+                                <span>2025CL福岡 12-3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="section" id="details">
+        <div class="container">
+            <h2 class="section-title">ポケカレッジ練習会の詳細</h2>
+            <div class="details-card">
+                <h3 class="details-title">開催情報</h3>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">📅</div>
+                    <div class="detail-content">
+                        <div class="detail-label">開催日時</div>
+                        <div class="detail-value">7月31日(木) 19:00〜22:00</div>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">📍</div>
+                    <div class="detail-content">
+                        <div class="detail-label">開催場所</div>
+                        <div class="detail-value">応募者のみに送信</div>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">💰</div>
+                    <div class="detail-content">
+                        <div class="detail-label">参加費</div>
+                        <div class="detail-value">500円</div>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">🎯</div>
+                    <div class="detail-content">
+                        <div class="detail-label">対象者</div>
+                        <div class="detail-value">ポケモンカードプレイヤー</div>
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">🏆</div>
+                    <div class="detail-content">
+                        <div class="detail-label">内容</div>
+                        <div class="detail-value">ひたすら対戦</div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="https://note.com/pokemon_volt/membership/join" class="cta-button">参加申込みはこちら</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 ポケカレッジ. All rights reserved.</p>
+                <p>最高の練習環境で、一緒にポケモンカードを楽しみましょう！</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card, .coach-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
